@@ -19,13 +19,29 @@ void Game::Reset()
 	ball.color = ConsoleColor::Cyan;
 	ResetBall();
 
+	isGameOver = false;
+	isWon = false;
+	
+	bricks.clear();
+
+	int numberOfBricks = 5;
+	int brickWidth = 10;
+	int spacing = 2;
+	int startX = 6;
+	
 	// TODO #2 - Add this brick and 4 more bricks to the vector
-	brick.width = 10;
-	brick.height = 2;
-	brick.x_position = 0;
-	brick.y_position = 5;
-	brick.doubleThick = true;
-	brick.color = ConsoleColor::DarkGreen;
+	for (int i = 0; i < numberOfBricks; i++)
+	{
+		Box newbrick;
+		newbrick.width = brickWidth;
+		newbrick.height = 2;
+		newbrick.x_position = startX + i * (brickWidth + spacing);
+		newbrick.y_position = 5;
+		newbrick.doubleThick = true;
+		newbrick.color = ConsoleColor::DarkGreen;
+
+		bricks.push_back(newbrick);
+	}
 }
 
 void Game::ResetBall()
